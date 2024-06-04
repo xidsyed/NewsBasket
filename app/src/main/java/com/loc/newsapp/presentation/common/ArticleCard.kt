@@ -46,7 +46,7 @@ fun ArticleCard(
     val context = LocalContext.current
     Row(
         modifier = modifier.clickable { onClick?.invoke() },
-        horizontalArrangement = Arrangement.spacedBy(ExtraSmallPadding),
+        horizontalArrangement = Arrangement.spacedBy(ExtraSmallPadding2),
         ) {
         AsyncImage(
             modifier = Modifier
@@ -88,7 +88,8 @@ fun ArticleCard(
                 Text(
                     text = article.publishedAt,
                     style = MaterialTheme.typography.labelSmall,
-                    color = colorResource(id = R.color.body)
+                    color = colorResource(id = R.color.body),
+                    maxLines = 1,
                 )
             }
         }

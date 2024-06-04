@@ -2,6 +2,7 @@ package com.loc.newsapp.presentation.home
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.basicMarquee
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -16,6 +17,8 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -39,8 +42,7 @@ fun HomeScreen(
         derivedStateOf {
             if (articles.itemCount >= 10)
                 articles.itemSnapshotList.items
-                    .slice(0..9)
-                    .map { it.title }.joinToString(" \uD83D\uDFE5 ")
+                    .slice(0..9).joinToString(" \uD83D\uDFE5 ") { it.title }
             else ""
         }
     }
@@ -59,11 +61,12 @@ fun HomeScreen(
             painter = painterResource(R.drawable.ic_logo),
             contentDescription = null,
             modifier = Modifier
-                .size(width = 150.dp, height = 30.dp)
+                .fillMaxWidth(0.6f)
                 .padding(horizontal = MediumPadding1)
+
         )
 
-        Spacer(modifier = Modifier.padding(MediumPadding1))
+        Spacer(modifier = Modifier.padding(ExtraSmallPadding2))
 
 
         // Search Box

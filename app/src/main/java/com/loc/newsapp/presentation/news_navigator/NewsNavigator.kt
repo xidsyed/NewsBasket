@@ -1,6 +1,7 @@
 package com.loc.newsapp.presentation.news_navigator
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.compose.foundation.layout.fillMaxSize
@@ -120,10 +121,13 @@ fun NewsNavigator() {
             }
 
             composable(route = Route.DetailsScreen.route) {
-                val viewModel: DetailsViewModel = hiltViewModel()
                 val article =
-                    navController.previousBackStackEntry?.savedStateHandle?.get<Article>("article")
-                navController.currentBackStackEntry?.savedStateHandle?.set("article", article)
+                    navController.previousBackStackEntry?.savedStateHandle?.get<Article?>("article")
+                article?.let {
+                    Log.d("TAG", "NewsNavigator: $it")
+                    navController.currentBackStackEntry?.savedStateHandle?.set("article", article)
+                }
+                val viewModel: DetailsViewModel = hiltViewModel()
 
                 val sideEffect = viewModel.sideEffect?.collectAsState()?.value
                 val isBookmarked = viewModel.isBookmarked.collectAsState().value
@@ -156,12 +160,10 @@ fun NewsNavigator() {
 private fun navigateToTab(navController: NavController, route: String) {
     navController.navigate(route) {
         navController.graph.startDestinationRoute?.let {
-            popUpTo(it) {
-                saveState = true
-            }
-            restoreState = true
-            launchSingleTop = true
+            popUpTo(it) { saveState = true }
         }
+        restoreState = true
+        launchSingleTop = true
     }
 }
 

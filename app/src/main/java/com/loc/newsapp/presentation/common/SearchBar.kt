@@ -76,6 +76,7 @@ fun SearchBar(
                 unfocusedIndicatorColor = Color.Transparent,
                 disabledIndicatorColor = Color.Transparent,
                 errorIndicatorColor = Color.Transparent,
+                containerColor = if (!isSystemInDarkTheme()) Color.White else Color.DarkGray
             ),
             singleLine = true,
             keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
@@ -99,7 +100,8 @@ fun SearchBar(
 
 fun Modifier.searchBar() = composed {
     if (!isSystemInDarkTheme()) this
-        .border(1.dp, Color.Black, MaterialTheme.shapes.medium)
+        .border(1.dp, Color.LightGray, MaterialTheme.shapes.medium)
+
     else this
 }
 
