@@ -1,4 +1,5 @@
-# Minimal News App
+![](https://i.imgur.com/5XZ9ylr.png)
+
 
 Minimal & Efficient news app that fetches news from [newsapi.org](https://newsapi.org/). Built with Clean Architecture driven use cases and best practices.
 
@@ -24,7 +25,12 @@ Minimal & Efficient news app that fetches news from [newsapi.org](https://newsap
 
 ## Screenshots
 
-_(Include screenshots of the app here)_
+
+
+| ![](https://i.imgur.com/CFAQmfl.jpeg) | ![](https://i.imgur.com/OfKyLUX.jpeg) |
+| ------------------------------------- | ------------------------------------- |
+| ![](https://i.imgur.com/xYZ6FfD.jpeg) | ![](https://i.imgur.com/jXsyZTh.jpeg) |
+
 
 ## Architecture
 
